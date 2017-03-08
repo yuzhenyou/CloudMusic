@@ -21,15 +21,16 @@
 ### Build Setup
 
 
-# 安装依赖
+### 安装依赖
 npm install
 
-# 运行项目，默认端口：8080
+### 运行项目，默认端口：8080
 npm run dev
-# 启动服务
+### 启动服务
 node.sev.js
 
-# 效果
+### 效果
+> 效果
 ![songs1](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs1.png)
 ![songs2](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs2.png)
 ![songs3](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs3.png)
