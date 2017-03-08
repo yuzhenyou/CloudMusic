@@ -1,6 +1,7 @@
-# 最近在学习Vue.js在论坛看到一个网易云音乐，于是自己也照着做了一个，先实现了基本功能，会持续更新。
-
-> 技术使用Vue2.0版本，Vue全家桶。
+#### 最近在学习Vue.js在论坛看到一个网易云音乐，于是自己也照着做了一个，
+先实现了基本功能，会持续更新。
+``` bash
+> 技术使用Vue2.0版本，Vue全家桶
 > Vue-cli搭建
 > Vue-router，vuex
 > axios
@@ -8,16 +9,16 @@
 
 #后端用的node.js进行api转发，默认端口：8088
 
-## 参考项目：[javaSwing](https://github.com/javaSwing/NeteaseCloudWebApp)
-## api: [网易云api](https://api.imjad.cn/cloudmusic/index.html)
-## 功能实现
+###### 参考项目：[javaSwing](https://github.com/javaSwing/NeteaseCloudWebApp)
+###### api: [网易云api](https://api.imjad.cn/cloudmusic/index.html)
+### 功能实现
 > 播放列表
 > 播放队列
 > 上一首，下一首
 > 歌词同步
 > ...
 
-## Build Setup
+### Build Setup
 
 ``` bash
 # 安装依赖
@@ -27,3 +28,10 @@ npm install
 npm run dev
 # 启动服务
 node.sev.js
+
+# 效果
+![songs1](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs1.jpg)
+![songs2](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs2.jpg)
+![songs3](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs3.jpg)
+![songs4](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs4.jpg)
+![songs5](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs5.jpg)
