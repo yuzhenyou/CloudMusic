@@ -30,8 +30,8 @@ npm run dev
 node.sev.js
 
 # 效果
-![songs1](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs1.jpg)
-![songs2](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs2.jpg)
-![songs3](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs3.jpg)
-![songs4](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs4.jpg)
-![songs5](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs5.jpg)
+![songs1](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs1.png)
+![songs2](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs2.png)
+![songs3](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs3.png)
+![songs4](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs4.png)
+![songs5](https://raw.githubusercontent.com/ZvvYuu/CloudMusic/master/static/img/songs5.png)
