@@ -3,7 +3,6 @@ import Router from 'vue-router'
 import singer from '../components/singer'
 import songs from '../components/songs'
 import index from '../components/index'
-import readerContent from '../components/readerContent'
 Vue.use(Router)
 
 export default new Router({
@@ -17,11 +16,6 @@ export default new Router({
       path: '/songs',
       name: 'songs',
       component: songs
-    },
-    {
-      path: '/readerContent',
-      name: 'readerContent',
-      component: readerContent
     },
     {
       path: '/singer',
