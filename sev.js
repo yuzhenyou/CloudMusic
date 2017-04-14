@@ -6,23 +6,6 @@ var url = require("url");
 var app = express();  
  
 //设置跨域访问  
-
-app.get('/in_theaters', function(req, res) {
-	var urls = 'https://api.douban.com/v2/movie/in_theaters';
-	req.pipe(request(urls,function(error,response,body) {})).pipe(res);
-});
-app.get('/coming_soon', function(req, res) {
-	var urls = 'https://api.douban.com/v2/movie/coming_soon';
-	req.pipe(request(urls,function(error,response,body) {})).pipe(res);
-});  
-
-app.get('/subject', function(req, res) {
-	var urlOption = url.parse(req.url);
-	var query = querystring.parse(urlOption.query);
-    var id = query.id;
-	var urls = 'https://api.douban.com/v2/movie/subject/'+id;
-	req.pipe(request(urls,function(error,response,body) {})).pipe(res);
-});
 app.get('/content', function(req, res) {
 	var urlOption = url.parse(req.url);
 	var urls='https://api.imjad.cn/cloudmusic/'+urlOption.search;
