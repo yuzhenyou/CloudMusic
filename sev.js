@@ -2,10 +2,9 @@ var https = require('https');
 var express = require('express');
 var request = require('request');
 var querystring = require("querystring");
-var url = require("url"); 
-var cors = require("cors");
+var url = require("url");
 var app = express();  
-app.use(cors());  
+ 
 //设置跨域访问  
 
 app.get('/in_theaters', function(req, res) {
