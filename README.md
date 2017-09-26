@@ -9,7 +9,6 @@
 
 ####后端用的node.js进行api转发，默认端口：8088
 
-###### 参考项目：[javaSwing](https://github.com/javaSwing/NeteaseCloudWebApp)
 ###### api: [网易云api](https://api.imjad.cn/cloudmusic/index.html)
 ### 功能实现
 >播放列表  <br />
