@@ -1,32 +1,32 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import singer from '../components/singer'
-import songs from '../components/songs'
-import index from '../components/index'
+import Home from '@/components/home'
+import Login from '@/components/login'
+import Mine from '@/components/mine'
+import Search from '@/components/search'
 Vue.use(Router)
 
 export default new Router({
   routes: [
     {
       path: '/',
-      name: 'index',
-      component: index
+      name: 'Home',
+      component: Home
     },
     {
-      path: '/songs',
-      name: 'songs',
-      component: songs
+      path: '/login',
+      name: 'Login',
+      component: Login
     },
     {
-      path: '/singer',
-      name: 'singer',
-      component: singer
+      path: '/mine',
+      name: 'Mine',
+      component: Mine
     },
-    { 
-      path: "*", 
-      redirect: '/index' 
+    {
+      path: '/search',
+      name: 'Search',
+      component: Search
     }
   ]
-
 })
-

@@ -3,20 +3,26 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
-import {store} from './store/store'
+import yogee from 'yogee'
 import axios from 'axios'
+import {store} from './store'
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
 Vue.use(MuseUI)
-Vue.prototype.$http=axios;
+import util from './util'
+Vue.use(util);
 
-
-
-
+Vue.config.productionTip = false
+Vue.prototype.$http=axios
+Vue.prototype.config={
+  api:'http://192.168.1.106:3000'
+}
+// Vue.use(Swiper)
+/* eslint-disable no-new */
 new Vue({
   el: '#app',
   router,
-  store:store,
+  store,
   template: '<App/>',
-  components: { App }
+  components: { App}
 })
