@@ -37,7 +37,7 @@ npm run dev
 
 ### 效果
 
-![songs1](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/songs1.png)
-![songs3](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/songs3.png)
-![songs4](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/songs4.png)
-![songs2](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/songs2.png)
+![songs1](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/song1.png)
+![songs3](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/song3.png)
+![songs4](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/song4.png)
+![songs2](https://raw.githubusercontent.com/yuzhenyou/CloudMusic/master/static/img/song2.png)
