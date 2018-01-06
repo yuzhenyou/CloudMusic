@@ -473,10 +473,10 @@ export default {
   /* top: -50%; */
 }
 .list-top-enter-active{
-  transition: all 0.5s ease 0.3s;
+  transition: all 0.5s ease 0.4s;
 }
 .list-top-leave-active{
-  transition: all 0.5s
+  transition: all 0.5s 
 }
 .list-top-enter-to,.list-top-leave{
   opacity: 1;
@@ -492,7 +492,7 @@ export default {
   transition: all 0.5s;
 }
 .list-bot-leave-active{
-  transition: all 0.5s ease 0.1s;
+  transition: all 0.5s ease 0.2s;
 }
 .list-bot-enter-to,.list-bot-leave{
   opacity: 1;
