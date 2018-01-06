@@ -78,7 +78,7 @@
             播放列表
           </div>
           <ul  class="play-list-ul">
-            <li class="play-list-li" v-for="(item,index) in playList" :key="item.id" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}">
+            <li class="play-list-li" v-for="(item,index) in playList" :key="item.id" @click="setUrl(item.id)" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}">
               <i class="play-list-index">{{index+1}}</i>
               <p class="play-list-name">
                 <span  v-text="item.name"></span>-<span class="play-list-singer"  v-text="item.ar[0].name" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}"></span>
@@ -173,7 +173,42 @@ export default {
           }
         }
       }
-
+    },
+    setUrl(id){
+      var _this=this;
+      //获取歌曲地址
+      this.$store.commit('setActiveId',id);
+      this.$http.get(this.config.api+'/music/url',{
+        params:{
+          id:id,
+          br:'320000'
+        }
+      }).then(function(res){
+        if(res.data.code==200){
+          _this.$store.commit('setUrl',res.data.data[0].url);
+        };
+      })
+      //获取歌词
+      this.$http.get(this.config.api+'/lyric',{
+        params:{
+          id:id
+        }
+      }).then(function(res){
+        if(res.data.code==200){
+          var str=_this.parseLyric(res.data.lrc.lyric);
+          _this.$store.commit('setLrc',str); 
+        };
+      })
+      //获取歌曲信息
+      this.$http.get(this.config.api+'/song/detail',{
+        params:{
+          ids:id
+        }
+      }).then(function(res){
+        if(res.data.code==200){
+          _this.$store.commit('setSongsInfo',res.data.songs[0])
+        };
+      })
     },
     showDetails(){
       this.details=!this.details;
