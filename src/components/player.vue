@@ -163,7 +163,7 @@ export default {
       if(this.details&&this.Lrc.length!=0){
         for(var i=0;i<this.Lrc.length;i++){
           if(this.player.currentTime>this.Lrc[i][0]){
-            this.LrcTop=-i*40+120+'px';
+            this.LrcTop=-i*40+90+'px';
             for(var j=0;j<this.Lrc.length;j++){
               document.querySelectorAll('.lrc li')[j].style.color="#f4ea2a"
             }
@@ -286,7 +286,7 @@ export default {
 }
 .player-details-top{
   width: 100%;
-  height: 65%;
+  height: 58%;
   color: #f4ea2a;
   text-align: center;
   display: flex;
@@ -296,7 +296,7 @@ export default {
 }
 .player-details-wrap{
   width: 100%;
-  height: 65%;
+  height: 58%;
   background: rgba(20, 20, 20, 0.6);
   position: absolute;
   top: 0;
@@ -304,7 +304,7 @@ export default {
 }
 .showLrc{
   width:70%;
-  height:54%;
+  height:50%;
   margin:10% auto;
   overflow:hidden;
   color:#f4ea2a;
@@ -339,7 +339,7 @@ export default {
 }
 .player-details-bottom{
   width: 100%;
-  height: 35%;
+  height: 42%;
   color: #f4ea2a;
   text-align: center;
 }
@@ -461,7 +461,7 @@ export default {
   top: 100%;
 }
 .slide-enter-active,.slide-leave-active{
-  transition: all 0.5s;
+  transition: all 0.6s;
 }
 .slide-enter-to,.slide-leave{
   opacity: 1;
