@@ -1,32 +1,35 @@
 <template>
   <div class="player">
     <!-- 多媒体控件 -->
-    <div class="play-audio">
-      <audio :src="url" controls=""  autoplay="" ref="player" preload="true" @timeupdate='playerTimeUpdate' @play="playerPlay" @ended="nextPlay"></audio>
+    <div class="player-controll">
+      <div class="play-audio">
+        <audio :src="url" controls=""  autoplay="" ref="player" preload="true" @timeupdate='playerTimeUpdate' @play="playerPlay" @ended="nextPlay"></audio>
+      </div>
+      <div class="timeLine"  v-bind:style="{width:timeLine+'%'}"></div>
+      <!-- 音乐信息 -->
+      <div class="player-info" @click="showDetails">
+        <div class="songsImg">
+          <img :src="songsInfo.al.picUrl" alt="">
+        </div>
+        <div class="songsTitle">
+          <p><span v-text="songsInfo.name"></span>-<span v-text="songsInfo.ar[0].name"></span></p>
+          <p v-text="songsInfo.al.name"></p>
+        </div>
+      </div>
+      <!-- 播放控件 -->
+      <div class="player-bar">
+        <div class="player-icon list" @click='showList'>
+          <img src="../../static/img/menu.png" alt="">
+        </div>
+        <div class="player-icon play" @click="playerControll">
+          <img :src="playerIcon" alt="">
+        </div>
+        <div class="player-icon next" @click="nextPlay">
+          <img src="../../static/img/next.png" alt="">
+        </div>
+      </div>
     </div>
-    <div class="timeLine"  v-bind:style="{width:timeLine+'%'}"></div>
-    <!-- 音乐信息 -->
-    <div class="player-info" @click="showDetails">
-      <div class="songsImg">
-        <img :src="songsInfo.al.picUrl" alt="">
-      </div>
-      <div class="songsTitle">
-        <p><span v-text="songsInfo.name"></span>-<span v-text="songsInfo.ar[0].name"></span></p>
-        <p v-text="songsInfo.al.name"></p>
-      </div>
-    </div>
-    <!-- 播放控件 -->
-    <div class="player-bar">
-      <div class="player-icon list" @click='showList'>
-        <img src="../../static/img/menu.png" alt="">
-      </div>
-      <div class="player-icon play" @click="playerControll">
-        <img :src="playerIcon" alt="">
-      </div>
-      <div class="player-icon next" @click="nextPlay">
-        <img src="../../static/img/next.png" alt="">
-      </div>
-    </div>
+
     <!-- 播放详情 -->
     <transition name="slide">
       <div class="player-details" v-if="details">
@@ -113,7 +116,8 @@ export default {
       topStyle:{
         backgroundImage: '',
         backgroundRepeat: "no-repeat",
-        backgroundSize: "100% 100%",
+        backgroundSize: "6rem 6rem",
+        backgroundPosition: "center center"
       }
     }
   },
@@ -247,6 +251,15 @@ export default {
   width: 100%;
   height: 1rem;
   background:rgba(0, 0, 0, 1);
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  z-index: 100;
+}
+.player-controll{
+  width: 100%;
+  height: 1rem;
+  background:rgba(0, 0, 0, 1);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -323,6 +336,7 @@ export default {
 .player-details-top{
   width: 100%;
   height: 58%;
+  min-height: 6rem;
   color: #f4ea2a;
   text-align: center;
   display: flex;
@@ -333,6 +347,7 @@ export default {
 .player-details-wrap{
   width: 100%;
   height: 58%;
+  min-height: 6rem;
   background: rgba(20, 20, 20, 0.6);
   position: absolute;
   top: 0;
@@ -449,7 +464,7 @@ export default {
   position: fixed;
   left: 0;
   top: 50%;
-  z-index: -1;
+  z-index: 99;
   color: #f4ea2a;
 }
 .play-list-title{
