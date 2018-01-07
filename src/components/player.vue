@@ -383,6 +383,7 @@ export default {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: normal;
+  margin-top: 0.2rem;
 }
 .player-details-ar{
   height: 1rem;
