@@ -1,7 +1,7 @@
 <template>
   <div class="login">
       <div class="backs" @click="back"> 
-        <img src="../../static/img/backTo.png" alt="">
+        <img src="../../static/img/back.png" alt="">
       </div>
       <div class="title">登录账号</div>
       <div class="login-content">

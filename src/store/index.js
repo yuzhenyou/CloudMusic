@@ -99,12 +99,14 @@ export const store=new Vuex.Store({
       state.playList.push(state.songsInfo);
     },
     setLrc:(state,Lrc)=>{
-      state.Lrc=Lrc;
-      var all='';
-      for(var i=0;i<Lrc.length;i++){
-          all+='<li data-id='+i+' class="LrcList">'+Lrc[i][1]+'</li>';
+      if(Lrc){
+        state.Lrc=Lrc;
+        var all='';
+        for(var i=0;i<Lrc.length;i++){
+            all+='<li data-id='+i+' class="LrcList">'+Lrc[i][1]+'</li>';
+        }
+        state.Lrcs=all;
       }
-      state.Lrcs=all;
     },
   },
   actions:{

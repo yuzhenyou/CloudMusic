@@ -1,7 +1,7 @@
 <template>
   <div class="mine">
       <div class="backs" @click="back"> 
-        <img src="../../static/img/backTo.png" alt="">
+        <img src="../../static/img/back.png" alt="">
       </div>
       <div class="mine-title" :style="titleStyle">
         <div class="mine-wrap">

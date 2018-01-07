@@ -78,9 +78,9 @@
             播放列表
           </div>
           <ul  class="play-list-ul">
-            <li class="play-list-li" v-for="(item,index) in playList" :key="item.id" @click="setUrl(item.id)" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}">
+            <li class="play-list-li" v-for="(item,index) in playList" :key="item.id"  :style="{color:item.id==activeId?'#fff':'#f4ea2a'}">
               <i class="play-list-index">{{index+1}}</i>
-              <p class="play-list-name">
+              <p class="play-list-name" @click="setUrl(item.id)">
                 <span  v-text="item.name"></span>-<span class="play-list-singer"  v-text="item.ar[0].name" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}"></span>
               </p>
               <span class="delete" @click="pop(index,playList)">X</span>
@@ -177,6 +177,7 @@ export default {
     setUrl(id){
       var _this=this;
       //获取歌曲地址
+      this.$store.commit('setLrc','');
       this.$store.commit('setActiveId',id);
       this.$http.get(this.config.api+'/music/url',{
         params:{
@@ -338,7 +339,7 @@ export default {
   left: 0;
 }
 .showLrc{
-  width:70%;
+  width:100%;
   height:50%;
   margin:10% auto;
   overflow:hidden;
@@ -351,14 +352,22 @@ export default {
   top:200px;
 }
 .lrc li{
+  font-size: 10px;
   height: 40px;
   line-height: 40px;
   font-family: 'microsoft yahei';
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
 }
 .player-details-name{
-  width: 100%;
+  width: 70%;
   height: 1rem;
-  line-height: 1rem;
+  line-height: 0.5rem;
+  margin: 0 auto;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: normal;
 }
 .player-details-ar{
   height: 1rem;

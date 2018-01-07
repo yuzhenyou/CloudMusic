@@ -58,6 +58,7 @@ export default {
     setUrl(id){
       var _this=this;
       //获取歌曲地址
+      this.$store.commit('setLrc','');
       this.$store.commit('setActiveId',id);
       this.$http.get(this.config.api+'/music/url',{
         params:{

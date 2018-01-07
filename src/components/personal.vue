@@ -2,7 +2,7 @@
   <div class="personal">
     <h6>推荐歌单</h6>
     <div class="personal-content">
-      <ul class="personal-ul clearfix">
+      <ul class="personal-ul">
         <li class="personal-li"  v-for="item in result" :key="item.name">
           <img :src="item.picUrl" alt="">
           <p v-text="item.name"></p>
@@ -40,11 +40,15 @@ export default {
 .personal{
   width: 100%;
 }
+.personal-ul{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
 .personal-li{
-  width: 2.26rem;
+  width: 2.3rem;
   height: 3.1rem;
-  float: left;
-  margin: 0 0.1rem 0.2rem;
+  margin: 0.01rem 0;
 }
 .personal-li img{
   display: inline-block;
