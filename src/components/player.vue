@@ -86,7 +86,7 @@
               <p class="play-list-name" @click="setUrl(item.id)">
                 <span  v-text="item.name"></span>-<span class="play-list-singer"  v-text="item.ar[0].name" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}"></span>
               </p>
-              <span class="delete" @click="pop(index,playList)">X</span>
+              <span class="delete" @click="pop(index,item.id)">X</span>
             </li>
           </ul>
         </div>
@@ -232,10 +232,15 @@ export default {
     nextPlay(){
       this.$store.dispatch("next");
     },
-    pop(index,playList){
+    pop(index,id){
       this.$store.commit('removePlayList',index);
-      if(playList.length!=0){
-        this.nextPlay();
+      console.log(id,this.activeId)
+      if(this.playList.length==0){
+        this.playerControll();
+        this.timeLine=0;
+        this.$store.commit('setActiveId',0);
+      }else if(id==this.activeId){
+        this.nextPlay()
       } 
     },
   },
