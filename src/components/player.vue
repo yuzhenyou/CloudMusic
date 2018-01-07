@@ -116,7 +116,7 @@ export default {
       topStyle:{
         backgroundImage: '',
         backgroundRepeat: "no-repeat",
-        backgroundSize: "6rem 6rem",
+        backgroundSize: "7.5rem 7.5rem",
         backgroundPosition: "center center"
       }
     }
@@ -336,7 +336,7 @@ export default {
 .player-details-top{
   width: 100%;
   height: 58%;
-  min-height: 6rem;
+  min-height: 7.5rem;
   color: #f4ea2a;
   text-align: center;
   display: flex;
@@ -347,7 +347,7 @@ export default {
 .player-details-wrap{
   width: 100%;
   height: 58%;
-  min-height: 6rem;
+  min-height: 7.5rem;
   background: rgba(20, 20, 20, 0.6);
   position: absolute;
   top: 0;
