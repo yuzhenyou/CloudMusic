@@ -18,7 +18,7 @@
       </div>
       <!-- 播放控件 -->
       <div class="player-bar">
-        <div class="player-icon list" @click='showList'>
+        <div class="player-icon listIcon" @click='showList'>
           <img src="../../static/img/menu.png" alt="">
         </div>
         <div class="player-icon play" @click="playerControll">
@@ -321,7 +321,7 @@ export default {
   width: 0.6rem;
   height: 0.6rem;
 }
-.list{
+.listIcon{
   width: 0.4rem;
   height: 0.43rem;
 }

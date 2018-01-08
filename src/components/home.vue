@@ -7,6 +7,7 @@
 </template>
 
 <script>
+import { mapMutations, mapGetters } from 'vuex'
 import Swiper from '@/components/Swiper'
 import Personal from '@/components/personal'
 import Top from '@/components/top'
@@ -14,14 +15,25 @@ export default {
   name: 'Home',
   data () {
     return {
-      msg: 'yogee'
+      
     }
   },
+  computed: {
+    ...mapGetters([
+      'reloads',
+      'activeId'
+    ]),
+  },
   methods:{
-
+    reload () {
+      window.location.reload();
+    }
   },
   mounted(){
-
+    if(this.reloads){
+      this.$store.commit('setReload',false);
+      window.location.reload();
+    }
   },
   components:{
     Swiper,Personal,Top

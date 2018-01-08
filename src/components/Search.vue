@@ -47,7 +47,8 @@ export default {
       var _this=this;
       this.$http.get(this.config.api+'/search',{
         params:{
-          keywords:_this.searchVal
+          keywords:_this.searchVal,
+          limit:100
         }
       }).then(function(res){
         if(res.data.code==200){
@@ -170,7 +171,6 @@ export default {
   color: #333;
 }
 .search-main-title{
-
   font-size: 15px;
   margin: 0.2rem 0;
 }
@@ -184,13 +184,15 @@ export default {
   width: 0.5rem;
   height: 0.7rem;
   line-height: 0.7rem;
-  text-align: center
+  text-align: center;
+  font-size: 10px;
 }
 .search-name{
   float: left;
   width: 6.5rem;
   height: 0.7rem;
   line-height: 0.7rem;
+  text-indent: 0.1rem;
   border-bottom: 1px solid #eee;
   text-overflow: ellipsis;
   overflow: hidden;

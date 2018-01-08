@@ -3,9 +3,12 @@
     <h6>推荐歌单</h6>
     <div class="personal-content">
       <ul class="personal-ul">
-        <li class="personal-li"  v-for="item in result" :key="item.name">
-          <img :src="item.picUrl" alt="">
-          <p v-text="item.name"></p>
+        
+        <li class="personal-li" v-for="item in result" :key="item.name">
+          <router-link :to="{path:'/list',query:{id:item.id}}">
+            <img :src="item.picUrl" alt="">
+            <p v-text="item.name"></p>
+          </router-link>
         </li>
       </ul>
     </div>
@@ -24,6 +27,11 @@ export default {
   },
   created(){
     var _this=this
+    _this.$store.commit('setList',{playlist:{
+      name:'',
+      coverImgUrl:'',
+      first:true
+    }});
     this.$http.get(this.config.api+'/personalized').then(function(res){
       if(res.data.code==200){
         _this.result=res.data.result

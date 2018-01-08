@@ -57,6 +57,11 @@ export default{
           return a[0] - b[0];
       });
       return result;
-  }
+    },
+    Vue.prototype.getFontSize=function () {
+      var fontSize=document.querySelector('html').style.fontSize;
+
+      return fontSize;
+    }
   }
 }

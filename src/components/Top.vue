@@ -7,8 +7,8 @@
           </router-link>
         </div>
         <div class="menu">
-          <div class="mine">我的</div>
-          <div class="home">首页</div>
+          <div class="mine"><router-link to="mineList">我的</router-link></div>
+          <div class="home"><router-link to="/">首页</router-link></div>
           <div class="find">发现</div>
         </div>
         <!-- 搜索 -->
@@ -25,9 +25,7 @@ import { mapMutations, mapGetters } from 'vuex'
 export default {
   data () {
     return {
-
-        avatarUrl:'../../static/img/user.png'
-
+      avatarUrl:'../../static/img/user.png'
     }
   },
   computed: {
@@ -35,12 +33,20 @@ export default {
       'userData'
     ])
   },
+  watch:{
+    'userData':{
+      handler:'changeData',
+      deep:true
+    }
+  },
   methods:{
-    
+    changeData(){
+      this.avatarUrl=this.userData.profile.avatarUrl
+    }
   },
   mounted(){
     if(!this.userData.first){
-      this.avatarUrl=this.userData.profile.avatarUrl;
+      this.avatarUrl=this.userData.profile.avatarUrl
     }
   }
 }
@@ -77,6 +83,9 @@ export default {
   color: #f4ea2a;
   font-family: 'microsoft yahei';
   text-align: center;
+}
+.menu a{
+  color: #f4ea2a;
 }
 .search{
   width: 0.6rem;

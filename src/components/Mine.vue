@@ -3,6 +3,7 @@
       <div class="backs" @click="back"> 
         <img src="../../static/img/back.png" alt="">
       </div>
+      <div class="out" @click="out">退出</div>
       <div class="mine-title" :style="titleStyle">
         <div class="mine-wrap">
           <div class="mine-img">
@@ -44,6 +45,22 @@ export default {
   methods:{
     back(){
       history.go(-1)
+    },
+    out(){
+      window.sessionStorage.removeItem("userData");
+      this.$store.commit('setUserData',{userData:{
+        profile:{
+          avatarUrl:'../../static/img/user.png',
+          nickname:'',
+          
+        },
+        account:{
+          createTime:'',
+        },
+        first:true
+      }});
+      this.$store.commit('setReload',true);
+      this.$router.replace('/')
     }
   }
 
@@ -52,6 +69,14 @@ export default {
 </script>
 
 <style>
+.out{
+  height: 1rem;
+  line-height: 1rem;
+  position: absolute;
+  right: 0.5rem;
+  color: #333;
+  font-family: 'microsoft yahei'
+}
 .mine-title{
   width: 100%;
   height: 5rem;

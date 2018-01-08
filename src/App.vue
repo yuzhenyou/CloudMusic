@@ -12,6 +12,9 @@ export default {
   name: 'app',
   components:{
     Player
+  },
+  mounted(){
+    
   }
 }
 </script>
@@ -64,5 +67,12 @@ img{
 .backs img{
   width: 0.6rem;
   height: 0.5rem;
+}
+/* swiper样式 */
+.swiper-pagination-bullet{
+  background:rgba(255,255,255,1);
+}
+.swiper-pagination-bullet-active{
+  background:#f4ea2a;
 }
 </style>
