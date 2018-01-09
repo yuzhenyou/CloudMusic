@@ -6,9 +6,13 @@ import Mine from '@/components/mine'
 import Search from '@/components/search'
 import List from '@/components/list'
 import MineList from '@/components/mineList'
+import Discuss from '@/components/discuss'
 Vue.use(Router)
 
 export default new Router({
+  scrollBehavior (to, from, savedPosition) {
+    return { x: 0, y: 0 }
+  },
   routes: [
     {
       path: '/',
@@ -33,12 +37,20 @@ export default new Router({
     {
       path: '/list',
       name: 'List',
-      component: List
+      component: List,
+      meta: {
+        keepAlive: true // 需要被缓存
+      }
     },
     {
       path: '/mineList',
       name: 'MineList',
       component: MineList
+    },
+    {
+      path: '/discuss',
+      name: 'Discuss',
+      component: Discuss
     }
   ]
 })

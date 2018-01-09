@@ -4,7 +4,7 @@
     <div class="personal-content">
       <ul class="personal-ul">
         
-        <li class="personal-li" v-for="item in result" :key="item.name">
+        <li class="personal-li" v-for="(item,index) in result" :key="index">
           <router-link :to="{path:'/list',query:{id:item.id}}">
             <img :src="item.picUrl" alt="">
             <p v-text="item.name"></p>

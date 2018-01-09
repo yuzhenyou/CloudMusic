@@ -4,7 +4,7 @@
     <div class="mineList">
       <ul class="mineList-ul">
         <div class="mineList-title">创建的歌单</div>
-        <li class="mineList-li" v-for='item in data.playlist' :key="item.id" @click="resetData" v-if="item.userId==userData.profile.userId">
+        <li class="mineList-li" v-for='(item,index) in data.playlist' :key="index" @click="resetData" v-if="item.userId==userData.profile.userId">
           <router-link :to="{path:'/list',query:{id:item.id}}">
           <div class="mineList-li-img">
             <img :src="item.coverImgUrl" alt="">
@@ -16,7 +16,7 @@
           </router-link>
         </li>
         <div class="mineList-title">收藏的歌单</div>
-        <li class="mineList-li" v-for='item in data.playlist' :key="item.id" @click="resetData" v-if="item.userId!==userData.profile.userId">
+        <li class="mineList-li" v-for='(item,index) in data.playlist' :key="index" @click="resetData" v-if="item.userId!==userData.profile.userId">
           <router-link :to="{path:'/list',query:{id:item.id}}">
           <div class="mineList-li-img">
             <img :src="item.coverImgUrl" alt="">
@@ -57,7 +57,7 @@ name: 'mineList',
       }
     }).then(function(res){
       if(res.data.code==200){
-        console.log(_this.data=res.data)
+        _this.data=res.data;
       };
     })
   },

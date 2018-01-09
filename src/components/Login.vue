@@ -40,8 +40,12 @@ export default {
           _this.$store.commit('setUserData',res.data);
           _this.$router.replace('/');
           window.sessionStorage.setItem('userData',JSON.stringify(res.data));
+        }else{
+          _this.$message(res.data.msg);
         }
-      })
+      }).catch(function (error) {
+        console.log(error);
+      });
     },
     back(){
       history.go(-1)

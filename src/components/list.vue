@@ -151,7 +151,10 @@ export default {
   font-size: 15px;
   text-align: center;
   font-family: 'microsoft yahei';
-  color: rgb(228, 228, 228);
+  color: rgb(255, 255, 255);
+  text-shadow:5px 2px 6px #000;
+  /* -webkit-text-stroke-width:0.7px;
+	-webkit-text-stroke-color:#fff; */
 }
 .list-title-content{
   width: 100%;
@@ -161,9 +164,9 @@ export default {
   left: 0;
 }
 .list-title-img{
-  width: 3rem;
-  height: 3rem;
-  margin: 0.1rem 0.3rem;
+  width: 130px;
+  height: 130px;
+  margin: 30px 30px;
   float: left;
 }
 .list-title-img img{
@@ -174,14 +177,15 @@ img[src=""]{
   opacity: 0;
 }
 .list-title-des{
-  width: 3.5rem;
-  height: 3rem;
+  width: 3rem;
+  height: 130px;
   float: left;
-  margin: 0.1rem 0;
-  color: rgb(228, 228, 228);
+  margin: 30px 0;
+  color: rgb(255, 255, 255);
+  text-shadow:5px 2px 6px #000;
 }
 .search-ul{
-  padding-bottom:1rem; 
+  padding-bottom:0.8rem; 
 }
 .search-li{
   width: 100%;

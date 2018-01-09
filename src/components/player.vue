@@ -68,31 +68,78 @@
               <img src="../../static/img/next.png" alt="">
             </div>
           </div>
+          <div class="player-details-other">
+            <div class="player-details-mode">
+              <img src="../../static/img/mode.png" alt="">
+            </div>
+            <div class="player-details-dis" @click="getDiscuss(activeId)">
+                <img src="../../static/img/dis.png" alt="">
+            </div>
+          </div>
         </div>
       </div>
     </transition> 
-    
-      <transition name="list-top">
-        <div class="player-list-top" v-if="list" @click="showList"></div>
-      </transition>
-      <transition name="list-bot">
-        <div class="player-list-bottom" v-if="list">
-          <div class="play-list-title">
-            播放列表
-          </div>
-          <ul  class="play-list-ul">
-            <li class="play-list-li" v-for="(item,index) in playList" :key="item.id"  :style="{color:item.id==activeId?'#fff':'#f4ea2a'}">
-              <i class="play-list-index">{{index+1}}</i>
-              <p class="play-list-name" @click="setUrl(item.id)">
-                <span  v-text="item.name"></span>-<span class="play-list-singer"  v-text="item.ar[0].name" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}"></span>
-              </p>
-              <span class="delete" @click="pop(index,item.id)">X</span>
-            </li>
-          </ul>
+    <!-- 播放列表 -->
+    <transition name="list-top">
+      <div class="player-list-top" v-if="list" @click="showList"></div>
+    </transition>
+    <transition name="list-bot">
+      <div class="player-list-bottom" v-if="list">
+        <div class="play-list-title">
+          播放列表
         </div>
-      </transition>
-    
-      
+        <ul  class="play-list-ul">
+          <li class="play-list-li" v-for="(item,index) in playList" :key="item.id"  :style="{color:item.id==activeId?'#fff':'#f4ea2a'}">
+            <i class="play-list-index">{{index+1}}</i>
+            <p class="play-list-name" @click="setUrl(item.id)">
+              <span  v-text="item.name"></span>-<span class="play-list-singer"  v-text="item.ar[0].name" :style="{color:item.id==activeId?'#fff':'#f4ea2a'}"></span>
+            </p>
+            <span class="delete" @click="pop(index,item.id)">X</span>
+          </li>
+        </ul>
+      </div>
+    </transition>
+    <!-- 评论 -->
+    <transition name="discuss">
+    <div class="discuss" v-if="discussState">
+      <div class="discuss-title">
+        <div class="backs" @click="backDiscuss"> 
+          <img src="../../static/img/back.png" alt="">
+        </div>
+        评论({{discuss.total}})
+      </div>
+      <div class="discuss-content">
+        <div class="discuss-content-title">精彩评论</div>
+        <ul class="discuss-ul">
+          <li class="discuss-li" v-for="(item,index) in discuss.hotComments" :key="index">
+            <div class="discuss-li-title">
+              <div class="discuss-li-img">
+                <img :src="item.user.avatarUrl" alt="">
+              </div>
+              <div class="discuss-li-name">
+                <p class="discuss-li-t" v-text="item.user.nickname"></p>
+                <p class="discuss-li-p" v-text="new Date(item.time).toLocaleDateString().substr(0,10).replace(/\//g,'-')"></p>
+              </div>
+            </div>
+            <div class="discuss-li-info" v-text="item.content"></div>
+          </li>
+          <div class="discuss-content-title">最新评论</div>
+          <li class="discuss-li" v-for="(item,index) in discuss.comments" :key="index+1000">
+            <div class="discuss-li-title">
+              <div class="discuss-li-img">
+                <img :src="item.user.avatarUrl" alt="">
+              </div>
+              <div class="discuss-li-name">
+                <p class="discuss-li-t" v-text="item.user.nickname"></p>
+                <p class="discuss-li-p" v-text="new Date(item.time).toLocaleDateString().substr(0,10).replace(/\//g,'-')"></p>
+              </div>
+            </div>
+            <div class="discuss-li-info" v-text="item.content"></div>
+          </li>
+        </ul>
+      </div>
+    </div>
+    </transition>  
   </div>
 </template>                                                                                                                                                                                                                                                                                                                                                              
 
@@ -104,6 +151,8 @@ export default {
       value:0,
       details:false,
       list:false,
+      discussState:false,
+      discuss:'',
       player:'',
       playerState: '',
       timeLine: 0,
@@ -141,8 +190,11 @@ export default {
   },
   methods:{
     back(){
-      
       this.details=!this.details;
+    },
+    backDiscuss(){
+      this.discussState=!this.discussState;
+      //this.details=true;
     },
     playerControll(){
       if(this.player.paused){
@@ -242,6 +294,22 @@ export default {
       }else if(id==this.activeId){
         this.nextPlay()
       } 
+    },      
+    getDiscuss(id){
+      //获取评论地址
+      this.discuss='';
+      this.backDiscuss();
+     // this.details=false;
+      var _this=this;
+      this.$http.get(this.config.api+'/comment/music',{
+        params:{
+          id:id
+        }
+      }).then(function(res){
+        if(res.data.code==200){
+          _this.discuss=res.data;
+        };
+      })
     },
   },
   mounted(){
@@ -336,7 +404,7 @@ export default {
   left: 0;
   top: 0;
   background: rgba(0, 0, 0, 1);
-  z-index: 9999;
+  z-index: 110;
 }
 .player-details-top{
   width: 100%;
@@ -446,6 +514,18 @@ export default {
   width: 0.6rem;
   height: 0.6rem;
 }
+.player-details-other{
+  width: 100%;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+.player-details-mode,
+.player-details-dis{
+  width: 0.4rem;
+  height: 0.4rem;
+}
 .player-list{
   width: 100%;
   height: 100%;
@@ -520,6 +600,70 @@ export default {
   line-height: 0.7rem;
 }
 
+.discuss{
+  width: 100%;
+  height: 100%;
+  background: #fff;
+  position: fixed;
+  top: 0;
+  left:0;
+  z-index: 120;
+  overflow: scroll;
+}
+.discuss-li{
+  border-bottom: 1px solid #eee;
+}
+.discuss-title{
+  width: 100%;
+  height: 1rem;
+  line-height: 1rem;
+  background: rgba(0, 0, 0, 1);
+  color: #f4ea2a;
+  text-align: center;
+  font-size: 15px;
+  font-family: 'microsoft yahei';
+  position: fixed;
+  top: 0;
+  left: 0;
+}
+.discuss-content{
+  width: 100%;
+  padding-top: 1rem;
+}
+.discuss-content-title{
+  width: 100%;
+  height: 0.5rem;
+  line-height: 0.5rem;
+  text-indent: 0.1rem;
+  background: #eee;
+  color: #666;
+}
+.discuss-li-title{
+  width: 100%;
+  height: 0.8rem;
+  margin-top: 0.2rem; 
+}
+.discuss-li-img{
+  width: 0.8rem;
+  height: 0.8rem;
+  float: left;
+  margin: 0 0.1rem;
+}
+.discuss-li-img img{
+  border-radius:0.4rem; 
+}
+.discuss-li-name p{
+  
+}
+.discuss-li-info{
+  width: 100%;
+  box-sizing: border-box;
+  padding: 0.2rem 0.1rem 0.2rem 1rem;
+  text-align: justify;
+}
+
+
+
 
 .slide-enter,.slide-leave-to{
   opacity: 0;
@@ -564,7 +708,17 @@ export default {
   top: 50%;
 }
 
-
+.discuss-enter,.discuss-leave-to{
+  opacity: 0;
+  left: 100%;
+}
+.discuss-enter-active,.discuss-leave-active{
+  transition: all 0.6s;
+}
+.discuss-enter-to,.discuss-leave{
+  opacity: 1;
+  left: 0;
+}
 
 
 </style>
