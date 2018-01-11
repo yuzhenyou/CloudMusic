@@ -570,6 +570,7 @@ export default {
   width: 100%;
   height: 0.7rem;
   float: left;
+  position: relative;
 }
 .play-list-index{
   float: left;
@@ -598,6 +599,10 @@ export default {
   width: 0.5rem;
   height: 0.7rem;
   line-height: 0.7rem;
+  text-align: center;
+  position: absolute;
+  right: 0;
+  top: 0;
 }
 
 .discuss{
@@ -713,7 +718,7 @@ export default {
   left: 100%;
 }
 .discuss-enter-active,.discuss-leave-active{
-  transition: all 0.6s;
+  transition: all 0.3s;
 }
 .discuss-enter-to,.discuss-leave{
   opacity: 1;
