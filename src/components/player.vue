@@ -675,7 +675,7 @@ export default {
   top: 100%;
 }
 .slide-enter-active,.slide-leave-active{
-  transition: all 0.6s;
+  transition: all 0.4s;
 }
 .slide-enter-to,.slide-leave{
   opacity: 1;
